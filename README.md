@@ -46,6 +46,7 @@ A full-featured shopping cart application built with Flask, featuring user authe
    ```
    pip install flask
    ```
+5. Set up your SECRET_KEY & STRIPE_SECRET_KEY in .env file
 
 ## Running the Application
 
