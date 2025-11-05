@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Shop-Ease | Search Results {% endblock %}
+
+{% block content %}
+
+<h2 class="text-center mb-4 fw-bold">
+  {% if query %}
+    Search results for "{{ query }}"
+  {% else %}
+    Our Featured Products
+  {% endif %}
+</h2>
+
+<div class="row g-4 justify-content-center">
+  {% if products %}
+    {% for product in products %}
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text small text-muted">{{ product.description[:60] }}...</p>
+            <p class="fw-semibold">₹{{ product.price }}</p>
+            <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="text-center text-muted">No products found.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

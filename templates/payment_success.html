@@ -1,0 +1,61 @@
+<!-- templates/payment_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Success | ShopEase</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      transition: background-color 1.5s ease;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .tick {
+      font-size: 80px;
+      color: white;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.8s ease;
+    }
+
+    .message {
+      font-size: 1.8rem;
+      color: white;
+      opacity: 0;
+      margin-top: 20px;
+      transition: all 0.8s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="tick">✅</div>
+  <div class="message">Payment Successful!</div>
+
+  <script>
+    // Step 1: After a short delay, turn the page green
+    setTimeout(() => {
+      document.body.style.backgroundColor = "#28a745"; // Bootstrap green
+
+      // Step 2: Show tick and message
+      const tick = document.querySelector('.tick');
+      const message = document.querySelector('.message');
+      tick.style.opacity = 1;
+      tick.style.transform = "scale(1)";
+      message.style.opacity = 1;
+
+      // Step 3: Redirect after 2.5 seconds
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2500);
+    }, 300);
+  </script>
+</body>
+</html>
